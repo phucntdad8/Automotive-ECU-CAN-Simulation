@@ -20,7 +20,7 @@ In modern automotive engineering, centralized processing is replaced by distribu
 This project meticulously replicates a car's internal network using 4 STM32F103C8T6 nodes. Each ECU independently handles its specific hardware layer (Sensors/Actuators via I2C, SPI, Timers) and shares multiplexed data across the CAN bus to a Main Dashboard ECU.
 
 <p align="center">
-  <img src="./images/system_arch.png" alt="System Architecture Diagram" width="90%">
+  <img src="./images/system_architecture.png" alt="System Architecture Diagram" width="90%">
   <br><em>Level 2 System Diagram: Multi-master CAN network architecture</em>
 </p>
 
@@ -36,8 +36,8 @@ Every ECU in this project was individually designed, pin-mapped, and configured 
 *   **Logic:** Reads Lux values. If the value drops below a safety threshold (e.g., entering a tunnel), it drives an LED HIGH and broadcasts a state-change message to the Main ECU.
 
 <p align="center">
-  <img src="./images/ecu1_pinout.png" alt="ECU 1 Pinout" width="45%"> &nbsp;
-  <img src="./images/ecu1_config.png" alt="ECU 1 I2C Config" width="45%">
+  <img src="./images/ecu1_light_pinout.png" alt="ECU 1 Pinout" width="45%"> &nbsp;
+  <img src="./images/ecu1_light_config.png" alt="ECU 1 I2C Config" width="45%">
 </p>
 
 ### 🅿️ ECU 2: Parking Assistance System (PAS)
@@ -47,8 +47,9 @@ Every ECU in this project was individually designed, pin-mapped, and configured 
 *   **CAN Output:** Broadcasts status payloads (`SAFE`, `SLOW`, `STOP`) over the CAN bus.
 
 <p align="center">
-  <img src="./images/ecu2_pinout.png" alt="ECU 2 Pinout" width="45%"> &nbsp;
-  <img src="./images/ecu2_config.png" alt="ECU 2 CAN Config" width="45%">
+  <img src="./images/ecu2_proximity_pinout.png" alt="ECU 2 Pinout" width="30%"> &nbsp;
+  <img src="./images/ecu2_proximity_timemode_config.png" alt="ECU 2 Timer Config" width="30%"> &nbsp;
+  <img src="./images/ecu2_proximity_canmode_config.png" alt="ECU 2 CAN Config" width="30%">
 </p>
 
 ### 💥 ECU 3: Crash Detection & Airbag Deployment
@@ -58,8 +59,8 @@ Every ECU in this project was individually designed, pin-mapped, and configured 
 *   **CAN Output:** Upon crash detection, triggers the Airbag deployment LED and immediately sends a high-priority `CRASH` interrupt message to stop the vehicle system.
 
 <p align="center">
-  <img src="./images/ecu3_pinout.png" alt="ECU 3 Pinout" width="45%"> &nbsp;
-  <img src="./images/ecu3_config.png" alt="ECU 3 Config" width="45%">
+  <img src="./images/ecu3_airbag_pinout.png" alt="ECU 3 Pinout" width="45%"> &nbsp;
+  <img src="./images/ecu3_airbag_config.png" alt="ECU 3 Config" width="45%">
 </p>
 
 ### 🎛️ Main ECU: Central Dashboard Controller
